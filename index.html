@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollie Krow — PM · Game Designer · Writer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080b12;
+      --bg2: #0d1120;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #7c8494;
+      --accent: #00ffff;
+      --accent2: #ff00aa;
+      --accent3: #00ffff;
+      --card: rgba(255,255,255,0.03);
+    }
+
+    #orbs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND MESH ── */
+    .bg-mesh {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .bg-mesh::before {
+      content: ''; position: absolute;
+      width: 800px; height: 800px; top: -200px; left: -200px;
+      background: radial-gradient(ellipse, rgba(0,255,255,0.1) 0%, transparent 70%);
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    .bg-mesh::after {
+      content: ''; position: absolute;
+      width: 700px; height: 700px; bottom: -100px; right: -100px;
+      background: radial-gradient(ellipse, rgba(255,0,170,0.1) 0%, transparent 70%);
+      animation: drift2 22s ease-in-out infinite alternate;
+    }
+    .bg-mesh-mid {
+      position: fixed;
+      width: 600px; height: 600px; top: 40%; left: 50%;
+      transform: translate(-50%,-50%);
+      background: radial-gradient(ellipse, rgba(255,0,170,0.05) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      animation: drift3 26s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px, 60px) scale(1.15); } }
+    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px, -80px) scale(1.2); } }
+    @keyframes drift3 { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-40%,-60%) scale(1.3); } }
+
+    .grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ── NAV (v2 style) ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 4rem;
+      background: rgba(8,11,18,0.75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Exo 2', sans-serif; font-weight: 800; font-size: 1.2rem;
+      letter-spacing: -0.01em; color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── LAYOUT ── */
+    main { position: relative; z-index: 2; }
+    section { padding: 7rem 4rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Fira Code', monospace; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after {
+      content: ''; display: block; width: 40px; height: 1px;
+      background: var(--accent); opacity: 0.5;
+    }
+    h1, h2, h3 { font-family: 'Exo 2', sans-serif; line-height: 1.1; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+    }
+    .hero-eyebrow {
+      font-family: 'Fira Code', monospace; font-size: 0.8rem;
+      color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.0; color: #fff;
+      margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+    .hero h1 .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.2rem; color: var(--muted); max-width: 520px;
+      margin-top: 1.5rem; font-weight: 300;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-actions {
+      display: flex; gap: 1rem; margin-top: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--bg); font-family: 'Exo 2', sans-serif; font-weight: 700;
+      font-size: 0.875rem; letter-spacing: 0.04em; text-transform: uppercase;
+      border-radius: 8px; text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-secondary {
+      padding: 0.85rem 2rem; background: transparent; color: var(--text);
+      font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 0.875rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      border: 1px solid var(--border); border-radius: 8px; text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .hero-tags {
+      display: flex; gap: 0.75rem; margin-top: 3.5rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 1s;
+    }
+    .tag {
+      font-family: 'Fira Code', monospace; font-size: 0.72rem;
+      padding: 0.35rem 0.85rem; border: 1px solid var(--border);
+      border-radius: 100px; color: var(--muted); letter-spacing: 0.08em;
+    }
+    .hero-scroll {
+      margin-top: 5rem; display: flex; align-items: center; gap: 1rem;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 1.2s;
+    }
+    .scroll-line { width: 60px; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
+    .scroll-text { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .about-text h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 1.5rem; }
+    .about-text h2 span { color: var(--accent); }
+    .about-text p { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; font-weight: 300; }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: rgba(0,255,255,0.25); }
+    .stat-num { font-family: 'Exo 2', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .skill-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,255,255,0.05), transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .skill-card:hover { border-color: rgba(0,255,255,0.3); transform: translateY(-4px); }
+    .skill-card:hover::before { opacity: 1; }
+    .skill-icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+    .skill-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+    .skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-list li {
+      font-family: 'Fira Code', monospace; font-size: 0.65rem;
+      letter-spacing: 0.06em; padding: 0.25rem 0.6rem;
+      background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::after {
+      content: '→'; position: absolute; top: 1.5rem; right: 1.75rem;
+      font-size: 1.2rem; color: var(--accent); opacity: 0;
+      transform: translateX(-8px); transition: opacity 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: rgba(0,255,255,0.35); transform: translateY(-4px); }
+    .project-card:hover::after { opacity: 1; transform: translateX(0); }
+    .project-status {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'Fira Code', monospace; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    .dot-active { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+    .dot-planned { background: var(--muted); }
+    .project-card h3 { font-size: 1.15rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+    .project-card p { font-size: 0.875rem; color: var(--muted); font-weight: 300; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag {
+      font-family: 'Fira Code', monospace; font-size: 0.62rem; padding: 0.2rem 0.55rem;
+      border-radius: 4px; background: rgba(255,0,170,0.1); color: var(--accent2); letter-spacing: 0.06em;
+    }
+
+    /* ── WRITING ── */
+    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .post-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; cursor: pointer; transition: border-color 0.25s, transform 0.25s;
+    }
+    .post-card:hover { border-color: rgba(255,0,170,0.3); transform: translateY(-4px); }
+    .post-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .post-cat { font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); }
+    .post-date { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--muted); }
+    .post-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.01em; line-height: 1.3; }
+    .post-card p { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
+    .post-read { margin-top: 1.25rem; font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+      padding: 4rem; text-align: center; position: relative; overflow: hidden; margin-top: 3rem;
+    }
+    .contact-inner::before {
+      content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(ellipse, rgba(0,255,255,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 1rem; }
+    .contact-inner p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; font-weight: 300; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border: 1px solid var(--border); border-radius: 8px;
+      color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto;
+    }
+    footer p { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .divider { max-width: 1100px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .contact-inner { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-mesh-mid"></div>
+<div class="grain"></div>
+<canvas id="orbs"></canvas>
+
+<!-- NAV (v2 style) -->
+<nav>
+  <a href="#" class="nav-logo">OK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://github.com/olliekrow" class="nav-cta" target="_blank">GitHub</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">// available for new projects</p>
+    <h1>
+      Ollie Krow
+      <span class="line2">PM · Designer · Writer</span>
+    </h1>
+    <p class="hero-sub">
+      I build <strong>systems that help teams ship</strong> and design <strong>games that make kids smile</strong>. I also write — about process, art, and everything in between.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">See My Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">GitHub Projects v2</span>
+      <span class="tag">Game Design</span>
+      <span class="tag">Documentation</span>
+      <span class="tag">Kids' Mobile</span>
+      <span class="tag">Jekyll</span>
+      <span class="tag">Writing</span>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label reveal">About</p>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2>Building with <span>intention</span> — across disciplines.</h2>
+        <p>I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.</p>
+        <p>My PM work is rooted in <strong>lean, native tooling</strong> — getting the most out of platforms teams already use. I prototype in a personal demo space before proposing org-level changes, because nobody likes a surprise restructure.</p>
+        <p>When I write, it's about <strong>process, art, inspiration, and craft</strong> — the things that make work worth doing.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Org-level GitHub projects built</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Issues triaged and labeled correctly</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">GDD template polished to benchmark quality</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Blog posts about things that actually matter</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">What I Bring</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">🗂️</span>
+        <h3>Program Management</h3>
+        <ul class="skill-list">
+          <li>GitHub Projects v2</li><li>GitHub Actions</li><li>GraphQL API</li>
+          <li>Issue Templates</li><li>Sprint Planning</li><li>Roadmapping</li>
+          <li>Stakeholder Comms</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎮</span>
+        <h3>Game Design</h3>
+        <ul class="skill-list">
+          <li>GDD Authoring</li><li>Core Loop Design</li><li>Kids' Mobile</li>
+          <li>Persona Design</li><li>Progression Systems</li><li>Accessibility</li>
+          <li>Playtesting</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">✍️</span>
+        <h3>Writing & Docs</h3>
+        <ul class="skill-list">
+          <li>Technical Writing</li><li>Blog Writing</li><li>Jekyll / Markdown</li>
+          <li>GitHub Pages</li><li>Process Docs</li><li>Onboarding Guides</li>
+          <li>YAML Templates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label reveal">Projects & Experiments</p>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-status"><span class="dot dot-active"></span> In Progress</div>
+        <h3>GitHub PM Architecture</h3>
+        <p>Org-level GitHub PM setup — issue templates, Projects v2 with custom fields, and GitHub Actions automation — prototyped before proposing to a real org.</p>
+        <div class="project-tags">
+          <span class="project-tag">GitHub Projects</span><span class="project-tag">Actions</span><span class="project-tag">GraphQL</span><span class="project-tag">YAML</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-status"><span class="dot dot-active"></span> In Progress</div>
+        <h3>Kids' Mobile GDD Template</h3>
+        <p>A polished game design document template for kids' mobile games — card-style personas, gender-neutral language, design pillars as decision filters.</p>
+        <div class="project-tags">
+          <span class="project-tag">Game Design</span><span class="project-tag">GDD</span><span class="project-tag">Mobile</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-status"><span class="dot dot-active"></span> Live</div>
+        <h3>Project Hub Docs Site</h3>
+        <p>A Just the Docs documentation site for PM workflows, game design references, onboarding, and roadmap — auto-deployed on every push to main.</p>
+        <div class="project-tags">
+          <span class="project-tag">Jekyll</span><span class="project-tag">GitHub Pages</span><span class="project-tag">Just the Docs</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-status"><span class="dot dot-planned"></span> Planned</div>
+        <h3>Date Auto-Population Action</h3>
+        <p>A GitHub Action that automatically sets Start Date on In Progress and End Date on Done — using GraphQL field IDs and Projects v2 status events.</p>
+        <div class="project-tags">
+          <span class="project-tag">GitHub Actions</span><span class="project-tag">GraphQL</span><span class="project-tag">Automation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <p class="section-label reveal">Writing</p>
+    <div class="posts-grid">
+      <div class="post-card reveal">
+        <div class="post-meta">
+          <span class="post-cat">Project Management</span>
+          <span class="post-date">Mar 2026</span>
+        </div>
+        <h3>Building a GitHub PM System From Scratch</h3>
+        <p>Most teams inherit GitHub in a state of chaos. This is a write-up of how to rebuild it using only native features — three projects instead of seventeen, labels over issue types, and estimation that doesn't add overhead.</p>
+        <div class="post-read">Read more →</div>
+      </div>
+      <div class="post-card reveal">
+        <div class="post-meta">
+          <span class="post-cat">Game Design</span>
+          <span class="post-date">Mar 2026</span>
+        </div>
+        <h3>What Makes a Good Game Design Document</h3>
+        <p>A GDD is not a spec. It's not a contract. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development.</p>
+        <div class="post-read">Read more →</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label reveal">Contact</p>
+    <div class="contact-inner reveal">
+      <h2>Let's work together.</h2>
+      <p>Whether it's a PM challenge, a game you're building, or something you want to write about — I'm interested. Reach out.</p>
+      <div class="contact-links">
+        <a href="https://github.com/olliekrow" class="contact-link" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="/cdn-cgi/l/email-protection#274f424b4b4867484b4b4e424c5548500944484a" class="contact-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://olliekrow.github.io/project-hub-2" class="contact-link" target="_blank">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          Docs Hub
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Ollie Krow — Built on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  <p>Inspired by <a href="https://github.com/said7388/developer-portfolio" target="_blank">said7388/developer-portfolio</a></p>
+</footer>
+
+<script>
+  // ── ORB CANVAS ──
+  const canvas = document.getElementById('orbs');
+  const ctx = canvas.getContext('2d');
+  const COLORS = ['#00ffff', '#ff00aa'];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+  const orbs = Array.from({ length: 7 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.5 + 0.75,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    vx: (Math.random() - 0.5) * 0.12,
+    vy: (Math.random() - 0.5) * 0.12,
+    alpha: Math.random() * 0.3 + 0.1,
+    pulse: Math.random() * Math.PI * 2,
+    pulseSpeed: Math.random() * 0.008 + 0.003,
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    orbs.forEach(o => {
+      o.pulse += o.pulseSpeed;
+      const glowR = o.r * (1 + 0.4 * Math.sin(o.pulse));
+      const alpha = o.alpha * (0.8 + 0.2 * Math.sin(o.pulse));
+
+      // glow halo
+      const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, glowR * 10);
+      grad.addColorStop(0, o.color + Math.round(alpha * 255).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, o.color + '00');
+      ctx.beginPath();
+      ctx.arc(o.x, o.y, glowR * 10, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // core dot
+      ctx.beginPath();
+      ctx.arc(o.x, o.y, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = o.color;
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      o.x += o.vx;
+      o.y += o.vy;
+
+      // subtle pull toward cursor
+      const dx = mouse.x - o.x;
+      const dy = mouse.y - o.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const pull = 0.0008;
+      o.vx += (dx / dist) * pull;
+      o.vy += (dy / dist) * pull;
+
+      // speed cap so they don't rocket off
+      const speed = Math.sqrt(o.vx * o.vx + o.vy * o.vy);
+      const maxSpeed = 0.6;
+      if (speed > maxSpeed) { o.vx = (o.vx / speed) * maxSpeed; o.vy = (o.vy / speed) * maxSpeed; }
+      if (o.x < -20) o.x = canvas.width + 20;
+      if (o.x > canvas.width + 20) o.x = -20;
+      if (o.y < -20) o.y = canvas.height + 20;
+      if (o.y > canvas.height + 20) o.y = -20;
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
