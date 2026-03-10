@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Ollie Krow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #080b12; --bg2: #0d1120; --border: rgba(255,255,255,0.07); --text: #e8eaf0; --muted: #7c8494; --accent: #00ffff; --accent2: #ff00aa; --card: rgba(255,255,255,0.03); }
+    #orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    .bg-mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .bg-mesh::before { content: ''; position: absolute; width: 800px; height: 800px; top: -200px; left: -200px; background: radial-gradient(ellipse, rgba(0,255,255,0.1) 0%, transparent 70%); animation: drift1 18s ease-in-out infinite alternate; }
+    .bg-mesh::after { content: ''; position: absolute; width: 700px; height: 700px; bottom: -100px; right: -100px; background: radial-gradient(ellipse, rgba(255,0,170,0.1) 0%, transparent 70%); animation: drift2 22s ease-in-out infinite alternate; }
+    .bg-mesh-mid { position: fixed; width: 600px; height: 600px; top: 40%; left: 50%; transform: translate(-50%,-50%); background: radial-gradient(ellipse, rgba(255,0,170,0.05) 0%, transparent 70%); pointer-events: none; z-index: 0; animation: drift3 26s ease-in-out infinite alternate; }
+    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px,60px) scale(1.15); } }
+    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,-80px) scale(1.2); } }
+    @keyframes drift3 { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-40%,-60%) scale(1.3); } }
+    .grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(8,11,18,0.75); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Exo 2', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'Fira Code', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { font-family: 'Fira Code', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.25rem; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 6px; text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+    main { position: relative; z-index: 2; padding-top: 6rem; }
+    .page-hero { padding: 5rem 4rem 3rem; max-width: 1100px; margin: 0 auto; }
+    .page-hero-eyebrow { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .page-hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 1.15rem; color: var(--muted); max-width: 620px; font-weight: 300; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .page-section { padding: 3rem 4rem 6rem; max-width: 1100px; margin: 0 auto; }
+    h1, h2, h3 { font-family: 'Exo 2', sans-serif; line-height: 1.1; }
+    .divider { max-width: 1100px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FILTER BAR */
+    .filter-bar { display: flex; gap: 0.75rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .filter-btn { font-family: 'Fira Code', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); background: transparent; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); }
+
+    /* POST LIST */
+    .post-list { display: flex; flex-direction: column; gap: 0; }
+    .post-row { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; padding: 2.5rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: opacity 0.2s; }
+    .post-row:first-child { border-top: 1px solid var(--border); }
+    .post-row:hover { opacity: 0.75; }
+    .post-row:hover .post-arrow { transform: translateX(4px); color: var(--accent); }
+    .post-row-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+    .post-cat { font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); }
+    .post-date { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--muted); }
+    .post-row h2 { font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; letter-spacing: -0.01em; line-height: 1.25; }
+    .post-row p { font-size: 0.9rem; color: var(--muted); font-weight: 300; max-width: 680px; line-height: 1.65; }
+    .post-arrow { font-size: 1.25rem; color: var(--muted); margin-top: 0.5rem; transition: transform 0.2s, color 0.2s; flex-shrink: 0; }
+
+    footer { position: relative; z-index: 2; border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+    footer p { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; } .nav-links { display: none; }
+      .page-hero, .page-section { padding: 3rem 1.5rem; }
+      .post-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .post-arrow { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-mesh-mid"></div>
+<div class="grain"></div>
+<canvas id="orbs"></canvas>
+
+<nav>
+  <a href="index.html" class="nav-logo">OK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html" class="active">Writing</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="https://github.com/olliekrow" class="nav-cta" target="_blank">GitHub</a>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">// writing</p>
+    <h1>Process, craft,<br><span>and everything else.</span></h1>
+    <p>Thoughts on program management, game design, and the overlapping space between structured thinking and creative work.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="page-section">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Project Management</button>
+      <button class="filter-btn">Game Design</button>
+    </div>
+
+    <div class="post-list">
+      <a href="blog/building-github-pm-system.html" class="post-row reveal">
+        <div>
+          <div class="post-row-meta">
+            <span class="post-cat">Project Management</span>
+            <span class="post-date">Mar 2026</span>
+          </div>
+          <h2>Building a GitHub PM System From Scratch</h2>
+          <p>Most teams inherit GitHub in a state of chaos — repo-level projects, inconsistent labels, no automation, no cross-repo visibility. This is a write-up of how to rebuild it using only native features, and the decisions that matter most along the way.</p>
+        </div>
+        <div class="post-arrow">→</div>
+      </a>
+
+      <a href="blog/what-makes-good-gdd.html" class="post-row reveal">
+        <div>
+          <div class="post-row-meta">
+            <span class="post-cat">Game Design</span>
+            <span class="post-date">Mar 2026</span>
+          </div>
+          <h2>What Makes a Good Game Design Document</h2>
+          <p>A GDD is not a spec. It's not a contract. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development. Here's what separates a useful GDD from one that collects dust.</p>
+        </div>
+        <div class="post-arrow">→</div>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Ollie Krow — <a href="index.html">Home</a></p>
+  <p><a href="https://github.com/olliekrow" target="_blank">github.com/olliekrow</a></p>
+</footer>
+
+<script>
+  const canvas = document.getElementById('orbs');
+  const ctx = canvas.getContext('2d');
+  const COLORS = ['#00ffff', '#ff00aa'];
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  const orbs = Array.from({ length: 7 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: Math.random() * 1.5 + 0.75, color: COLORS[Math.floor(Math.random() * COLORS.length)], vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12, alpha: Math.random() * 0.3 + 0.1, pulse: Math.random() * Math.PI * 2, pulseSpeed: Math.random() * 0.008 + 0.003 }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    orbs.forEach(o => {
+      o.pulse += o.pulseSpeed;
+      const glowR = o.r * (1 + 0.4 * Math.sin(o.pulse));
+      const alpha = o.alpha * (0.8 + 0.2 * Math.sin(o.pulse));
+      const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, glowR * 10);
+      grad.addColorStop(0, o.color + Math.round(alpha * 255).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, o.color + '00');
+      ctx.beginPath(); ctx.arc(o.x, o.y, glowR * 10, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+      ctx.beginPath(); ctx.arc(o.x, o.y, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = o.color; ctx.globalAlpha = alpha; ctx.fill(); ctx.globalAlpha = 1;
+      o.x += o.vx; o.y += o.vy;
+      const dx = mouse.x - o.x; const dy = mouse.y - o.y; const dist = Math.sqrt(dx*dx+dy*dy);
+      o.vx += (dx/dist)*0.0008; o.vy += (dy/dist)*0.0008;
+      const spd = Math.sqrt(o.vx*o.vx+o.vy*o.vy);
+      if (spd > 0.6) { o.vx=(o.vx/spd)*0.6; o.vy=(o.vy/spd)*0.6; }
+      if (o.x<-20) o.x=canvas.width+20; if (o.x>canvas.width+20) o.x=-20;
+      if (o.y<-20) o.y=canvas.height+20; if (o.y>canvas.height+20) o.y=-20;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Filter buttons (visual only for now)
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
