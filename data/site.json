@@ -1,0 +1,211 @@
+{
+  "hero": {
+    "eyebrow": "// program manager · game designer · writer",
+    "heading": "Ollie Krow",
+    "heading_gradient": "Build. Design. Write.",
+    "sub": "I build <strong>systems that help teams ship</strong>, design <strong>games that make kids smile</strong>, and write about the craft behind both.",
+    "tags": ["GitHub Projects v2", "Game Design", "Documentation", "Kids' Mobile", "Jekyll", "GitHub Actions", "Writing"]
+  },
+  "about": {
+    "heading": "Building with intention — across disciplines.",
+    "heading_accent": "intention",
+    "paragraphs": [
+      "I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.",
+      "My PM work is rooted in <strong>lean, native tooling</strong> — getting the most out of platforms teams already use without introducing tool sprawl. I prototype in a demo space before proposing org-level changes, because nobody likes a surprise restructure.",
+      "When I write, it's about <strong>process, art, inspiration, and craft</strong> — the things that make work worth doing."
+    ],
+    "stats": [
+      { "num": "3", "label": "Org-level GitHub projects built from scratch" },
+      { "num": "4+", "label": "Active projects across PM, game design & docs" },
+      { "num": "1", "label": "GDD template polished to benchmark quality" },
+      { "num": "∞", "label": "Issues triaged and labeled correctly" }
+    ],
+    "full": {
+      "paragraphs": [
+        "I'm a <strong>Program Manager</strong> with a background that spans operations, game design, and technical writing. My approach is rooted in <strong>lean, native tooling</strong> — I'd rather get 90% of the value from tools a team already has than introduce a new platform that adds overhead without adding clarity.",
+        "On the PM side, I build structured systems from scratch. That means <strong>issue templates, project boards, automation workflows, and documentation</strong> — not as an end in themselves, but as scaffolding that helps teams move faster with less friction. I prototype in a personal demo space before proposing anything at the org level, because changes to shared infrastructure deserve a soft landing.",
+        "On the game design side, I write <strong>GDDs that function as thinking tools</strong> rather than spec documents. A good GDD forces decisions early — about core loop, about who the player is, about what the game refuses to compromise on. I specialise in kids' mobile games, where the design constraints are the most interesting.",
+        "I also <strong>write</strong> — about process, craft, and the things that make work worth doing. The blog is where I work through ideas that don't fit anywhere else."
+      ],
+      "disciplines": ["Program Management", "Game Design", "Technical Writing", "Documentation", "Process Design"],
+      "tools": ["GitHub Projects v2", "GitHub Actions", "GraphQL API", "Jekyll / Just the Docs", "Google Docs / Drive", "YAML / Markdown"]
+    }
+  },
+  "principles": [
+    { "num": "01", "title": "Demo before proposing", "body": "Nobody likes a surprise restructure. Prototype the change in a safe space first. Show, don't pitch." },
+    { "num": "02", "title": "Lean tooling", "body": "The best tool is the one a team already has. Add a new platform only when the native option genuinely can't do the job." },
+    { "num": "03", "title": "Documentation as first-class work", "body": "A system nobody can onboard into is a system that will break. Good docs aren't overhead — they're the product." },
+    { "num": "04", "title": "Design pillars as filters", "body": "A design pillar isn't a vibe. It's a decision-making tool. If it can't be used to say no to something, it's not doing its job." },
+    { "num": "05", "title": "Estimation without overhead", "body": "Story points, velocity, T-shirt sizes — pick one and make it dead simple. Complexity in the estimation system defeats its own purpose." },
+    { "num": "06", "title": "Iterative refinement", "body": "The first version is a hypothesis. Ship it, learn from it, improve it. Quality is a direction, not a destination." }
+  ],
+  "skills": [
+    {
+      "icon": "🗂️",
+      "title": "Program Management",
+      "items": ["GitHub Projects v2", "GitHub Actions", "GraphQL API", "Issue Templates", "Sprint Planning", "Roadmapping", "Stakeholder Comms", "Process Design"]
+    },
+    {
+      "icon": "🎮",
+      "title": "Game Design",
+      "items": ["GDD Authoring", "Core Loop Design", "Kids' Mobile", "Persona Design", "Progression Systems", "Accessibility", "Playtesting", "Design Pillars"]
+    },
+    {
+      "icon": "✍️",
+      "title": "Writing & Docs",
+      "items": ["Technical Writing", "Blog Writing", "Jekyll / Markdown", "GitHub Pages", "Process Docs", "Onboarding Guides", "YAML Templates", "Just the Docs"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "github-pm",
+      "status": "wip",
+      "status_label": "In Progress",
+      "title": "GitHub PM Architecture",
+      "summary": "A full org-level PM setup built from scratch — YAML issue templates, three Projects v2 boards with custom fields, and GitHub Actions automation for date tracking. Prototyped in a personal demo space before proposing to a real org.",
+      "tags": ["GitHub Projects", "Actions", "GraphQL", "YAML"],
+      "links": [
+        { "label": "View on GitHub", "url": "https://github.com/olliekrow" },
+        { "label": "Read the Docs", "url": "https://olliekrow.github.io/project-hub-2/docs/github-pm/" }
+      ],
+      "detail": {
+        "intro": "A full org-level GitHub PM setup, built from scratch in a personal demo space before proposing it to a real organisation. The goal was to replace a scattered collection of repo-level projects with a coherent, cross-repo architecture using only native GitHub tooling.",
+        "sections": [
+          {
+            "heading": "What was built",
+            "items": [
+              "A YAML issue template suite covering Epics, User Stories, Tasks, Bug Reports, and Feature Requests — each with structured fields and consistent labelling conventions.",
+              "Three org-level Projects v2 boards: a Roadmap (Epics on a timeline by milestone), a Team Planning board (Kanban with iteration support), and a Bug Tracker.",
+              "Custom fields including Start Date, End Date, and a Size field (XS–XL mapped to Fibonacci values 1/2/3/5/8) serving as the estimation proxy.",
+              "A GitHub Action (set-dates.yml) that auto-populates Start Date on transition to In Progress and End Date on transition to Done, using the Projects v2 GraphQL API."
+            ]
+          },
+          {
+            "heading": "Key decisions",
+            "items": [
+              "<strong>Label-based filtering over issue types</strong> — GitHub issue types weren't rendering reliably in project filters, so label-based filtering is the more dependable workaround.",
+              "<strong>Org-level projects only</strong> — repo-level projects lack cross-repo visibility. Org-level is the correct architecture for any team working across multiple repositories.",
+              "<strong>Size as estimation proxy</strong> — avoids introducing a second field and keeps the estimation process lightweight."
+            ]
+          }
+        ],
+        "callout": "Prototyping in a personal demo space before proposing org changes is how you manage stakeholder risk. Nobody likes a surprise restructure."
+      }
+    },
+    {
+      "id": "gdd",
+      "status": "wip",
+      "status_label": "In Progress",
+      "title": "Kids' Mobile GDD Template",
+      "summary": "A polished, reusable game design document template for kids' mobile games. Card-style persona blocks, gender-neutral language as a hard standard, and design pillars framed as decision filters rather than decorative statements.",
+      "tags": ["Game Design", "GDD", "Mobile", "Kids"],
+      "links": [
+        { "label": "Read the Docs", "url": "https://olliekrow.github.io/project-hub-2/docs/game-design/" }
+      ],
+      "detail": {
+        "intro": "A polished, reusable game design document template built specifically for kids' mobile games. Developed using an existing high-quality GDD as a quality benchmark, with the goal of producing something immediately usable rather than a generic starting point.",
+        "sections": [
+          {
+            "heading": "Design philosophy",
+            "items": [
+              "<strong>Card-style persona blocks</strong> over side-by-side layouts — tested both approaches; card-style outperforms for readability.",
+              "<strong>Gender-neutral language as a hard standard</strong> — descriptive names and they/them pronouns throughout. Not a stylistic preference, a firm requirement.",
+              "<strong>Design pillars as decision filters</strong> — each pillar is written so it can be used to reject a design proposal.",
+              "<strong>Accessibility as a first-class concern</strong> — no text literacy dependency, clear visual affordances, short session design."
+            ]
+          },
+          {
+            "heading": "Template structure",
+            "items": [
+              "Game Overview — elevator pitch, platform, audience, genre, tone",
+              "Design Pillars — 3–5 decision-filter statements",
+              "Core Loop — primary and secondary loops with session arc",
+              "Player Personas — card-style with name, age, context, motivations, pain points",
+              "Progression Systems — rewards, unlocks, difficulty curve",
+              "Accessibility Considerations — visual, motor, cognitive",
+              "Out of Scope — explicit list of things the game will not do"
+            ]
+          }
+        ],
+        "callout": "A GDD is not a spec. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development."
+      }
+    },
+    {
+      "id": "docs-site",
+      "status": "live",
+      "status_label": "Live",
+      "title": "Project Hub Docs Site",
+      "summary": "A Jekyll + Just the Docs documentation site covering PM workflows, game design references, and onboarding. Auto-deployed on every push via GitHub Actions. Built entirely with native GitHub tooling.",
+      "tags": ["Jekyll", "GitHub Pages", "Just the Docs", "CI/CD"],
+      "links": [
+        { "label": "View Live Site", "url": "https://olliekrow.github.io/project-hub-2" },
+        { "label": "View on GitHub", "url": "https://github.com/olliekrow/project-hub-2" }
+      ],
+      "detail": {
+        "intro": "A Jekyll-based documentation site using the Just the Docs theme, covering PM workflows, game design references, and onboarding material. Deployed automatically on every push to main via GitHub Actions.",
+        "sections": [
+          {
+            "heading": "Tech stack",
+            "items": [
+              "Jekyll with the Just the Docs v0.10.0 theme via remote_theme",
+              "GitHub Actions workflow for automatic build and deployment",
+              "Structured navigation with section index files and permalink conventions",
+              "Hosted on GitHub Pages (free tier)"
+            ]
+          },
+          {
+            "heading": "Site structure",
+            "items": [
+              "<strong>GitHub PM</strong> — issue templates, project architecture, workflow automation and GraphQL queries",
+              "<strong>Game Design</strong> — GDD template reference and structure documentation",
+              "<strong>Onboarding</strong> — placeholder, to be built out",
+              "<strong>Roadmap</strong> — placeholder, to be built out"
+            ]
+          }
+        ],
+        "callout": "Built entirely with native GitHub tooling. No third-party hosting, no paid CI/CD service, no CMS — just a repo, a theme, and a workflow file."
+      }
+    },
+    {
+      "id": "ipsum",
+      "status": "live",
+      "status_label": "Completed",
+      "title": "Nonprofit Operations Overhaul",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organisation.",
+      "tags": ["Operations", "PM", "Nonprofit"],
+      "links": [],
+      "detail": {
+        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organisation.",
+        "sections": [
+          {
+            "heading": "What was delivered",
+            "items": [
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+              "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+            ]
+          },
+          {
+            "heading": "Outcomes",
+            "items": [
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+              "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+              "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit."
+            ]
+          }
+        ],
+        "callout": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Details anonymised on request — available to discuss in conversation."
+      }
+    }
+  ],
+  "contact": {
+    "heading": "Let's work together.",
+    "sub": "Whether it's a PM challenge, a game you're building, or something you want to write about — I'm interested. Reach out.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/olliekrow", "icon": "github" },
+      { "label": "Email", "url": "mailto:placeholder@email.com", "icon": "email" },
+      { "label": "Docs Hub", "url": "https://olliekrow.github.io/project-hub-2", "icon": "docs" }
+    ]
+  }
+}

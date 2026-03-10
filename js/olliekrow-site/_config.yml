@@ -1,0 +1,75 @@
+title: Ollie Krow
+tagline: Program Manager · Game Designer · Writer
+description: Personal site and blog covering project management, game design, and writing.
+
+url: "https://olliekrow.github.io"
+baseurl: ""
+
+# --- Theme ---
+remote_theme: cotes2020/jekyll-theme-chirpy@v7.2.4
+
+# --- Author ---
+author:
+  name: Ollie Krow
+  url: https://github.com/olliekrow
+
+# --- Social ---
+github:
+  username: olliekrow
+
+# --- Appearance ---
+theme_mode: dark
+
+# --- Timezone ---
+timezone: America/Vancouver
+
+# --- Navigation pages ---
+# Pages with layout: page and in _pages/ will appear in nav automatically
+
+# --- Blog Pagination ---
+paginate: 5
+
+# --- Search ---
+search: true
+
+# --- Plugins ---
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-archives
+
+# --- Defaults ---
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+# --- Archives ---
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
+
+# --- Exclude ---
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor

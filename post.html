@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Ollie Krow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <style>
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 4rem 4rem 6rem; }
+    .article-back { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2.5rem; transition: color 0.2s; }
+    .article-back:hover { color: var(--accent); }
+    .article-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .article-cat { font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); }
+    .article-date { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--muted); }
+    .article-tag { font-family: 'Fira Code', monospace; font-size: 0.6rem; letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border: 1px solid var(--border); border-radius: 100px; color: var(--muted); cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .article-tag:hover { border-color: rgba(0,255,255,0.4); color: var(--accent); }
+    .article-title { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 1.5rem; line-height: 1.15; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .article-intro { font-size: 1.15rem; color: var(--muted); font-weight: 300; max-width: 640px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; border-bottom: 1px solid var(--border); padding-bottom: 2.5rem; margin-bottom: 2.5rem; }
+
+    /* ARTICLE BODY */
+    .article-body h2 { font-size: 1.6rem; font-weight: 800; color: #fff; margin: 3rem 0 1rem; letter-spacing: -0.02em; }
+    .article-body h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 2rem 0 0.75rem; }
+    .article-body p { color: var(--muted); margin-bottom: 1.25rem; font-weight: 300; font-size: 1rem; }
+    .article-body p strong { color: var(--text); font-weight: 500; }
+    .article-body code { font-family: 'Fira Code', monospace; font-size: 0.85em; color: var(--accent); background: rgba(0,255,255,0.07); padding: 0.15rem 0.4rem; border-radius: 4px; }
+    .article-body ul { margin: 0 0 1.25rem; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .article-body li { color: var(--muted); font-size: 0.975rem; font-weight: 300; display: flex; align-items: flex-start; gap: 0.6rem; }
+    .article-body li::before { content: '›'; color: var(--accent); font-family: 'Fira Code', monospace; flex-shrink: 0; margin-top: 0.1rem; }
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 2rem 0; font-size: 0.95rem; color: var(--muted); font-style: italic; }
+
+    /* FOOTER NAV */
+    .article-nav { display: flex; align-items: center; justify-content: space-between; padding-top: 3rem; border-top: 1px solid var(--border); gap: 1rem; }
+    .article-nav a { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--accent); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.2s; }
+    .article-nav a:hover { opacity: 0.7; }
+    .article-nav .spacer { flex: 1; }
+
+    .not-found { text-align: center; padding: 6rem 2rem; color: var(--muted); font-family: 'Fira Code', monospace; }
+    .not-found h2 { font-size: 2rem; color: #fff; margin-bottom: 1rem; }
+
+    @media (max-width: 768px) {
+      .article-wrap { padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="bg-mesh-mid"></div>
+<div class="grain"></div>
+<canvas id="orbs"></canvas>
+
+<nav>
+  <a href="index.html" class="nav-logo">OK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html" class="active">Writing</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="https://github.com/olliekrow" class="nav-cta" target="_blank">GitHub</a>
+</nav>
+
+<main id="main-content"></main>
+
+<footer>
+  <p>© 2026 Ollie Krow — <a href="index.html">Home</a></p>
+  <p><a href="https://github.com/olliekrow" target="_blank">github.com/olliekrow</a></p>
+</footer>
+
+<script src="js/orbs.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+function renderBlock(block) {
+  switch (block.type) {
+    case 'h2': return `<h2>${block.text}</h2>`;
+    case 'h3': return `<h3>${block.text}</h3>`;
+    case 'p':  return `<p>${block.text}</p>`;
+    case 'ul': return `<ul>${block.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    case 'callout': return `<div class="callout">${block.text}</div>`;
+    default: return '';
+  }
+}
+
+async function init() {
+  const slug = new URLSearchParams(window.location.search).get('slug');
+  const posts = await fetch('data/posts.json').then(r => r.json());
+
+  const idx = posts.findIndex(p => p.slug === slug);
+  const post = posts[idx];
+
+  if (!post) {
+    document.getElementById('main-content').innerHTML = `
+      <div class="article-wrap">
+        <div class="not-found">
+          <h2>Post not found</h2>
+          <p>This post doesn't exist or may have moved.</p>
+          <a href="blog.html" style="color:var(--accent);">← Back to all posts</a>
+        </div>
+      </div>`;
+    return;
+  }
+
+  document.title = `${post.title} — Ollie Krow`;
+
+  const prev = posts[idx + 1];
+  const next = posts[idx - 1];
+
+  document.getElementById('main-content').innerHTML = `
+    <div class="article-wrap">
+      <a href="blog.html" class="article-back">← All Posts</a>
+      <div class="article-meta">
+        <span class="article-cat">${post.category}</span>
+        <span class="article-date">${post.date}</span>
+        ${post.tags.map(t => `<a href="blog.html" class="article-tag" onclick="sessionStorage.setItem('filterTag','${t}')">${t}</a>`).join('')}
+      </div>
+      <h1 class="article-title">${post.title}</h1>
+      <p class="article-intro">${post.excerpt}</p>
+      <div class="article-body">
+        ${post.content.map(renderBlock).join('')}
+      </div>
+      <div class="article-nav">
+        ${prev ? `<a href="post.html?slug=${prev.slug}">← ${prev.title}</a>` : '<span></span>'}
+        <span class="spacer"></span>
+        ${next ? `<a href="post.html?slug=${next.slug}">${next.title} →</a>` : '<a href="blog.html">All Posts →</a>'}
+      </div>
+    </div>
+  `;
+}
+init();
+</script>
+</body>
+</html>

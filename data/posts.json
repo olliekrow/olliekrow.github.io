@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "building-github-pm-system",
+    "title": "Building a GitHub PM System From Scratch",
+    "date": "Mar 2026",
+    "category": "Project Management",
+    "tags": ["github", "pm", "automation", "workflows", "projects-v2"],
+    "excerpt": "Most teams inherit GitHub in a state of chaos — repo-level projects, inconsistent labels, no automation, no cross-repo visibility. This is how to rebuild it using only native features.",
+    "content": [
+      { "type": "p", "text": "When you inherit a GitHub organisation that's been used for a while without a PM strategy, you tend to find the same things: seventeen projects that are a mix of active, stale, and abandoned; labels that mean different things in different repos; issues with no consistent structure; and zero automation." },
+      { "type": "p", "text": "The instinct is to reach for a tool — ZenHub, Linear, Jira. But in most cases, <strong>the problem isn't the tooling, it's the architecture</strong>. GitHub has everything you need to build a solid PM system. The question is how to structure it." },
+      { "type": "h2", "text": "Start with the right level" },
+      { "type": "p", "text": "The most common mistake is building at the repo level. Repo-level projects are fine if you have one repo and one team, but they break down the moment you have cross-repo work — which is almost every real organisation." },
+      { "type": "p", "text": "Org-level projects solve this. They can pull issues from any repo in the organisation, which gives you the cross-repo visibility that repo-level projects fundamentally can't provide. Everything should live at the org level." },
+      { "type": "h2", "text": "Three projects, not seventeen" },
+      { "type": "p", "text": "You probably don't need seventeen projects. You probably need three:" },
+      { "type": "ul", "items": [
+        "<strong>Roadmap</strong> — Epics on a timeline, organised by milestone. This is the strategic view. It answers: what are we building, and when?",
+        "<strong>Team Planning</strong> — A Kanban board with iteration support. This is the operational view. It answers: what is the team working on right now?",
+        "<strong>Bug Tracker</strong> — A dedicated board for bugs, separate from feature work. Bugs have a different lifecycle and deserve a different view."
+      ]},
+      { "type": "p", "text": "Start here. Add more only when you have a clear reason why these three aren't enough." },
+      { "type": "h2", "text": "Issue templates are infrastructure" },
+      { "type": "p", "text": "Consistent issue templates are one of the highest-leverage investments you can make. Without them, issues are free-form text and filtering becomes impossible. With them, every issue has a known structure that automation and reporting can rely on." },
+      { "type": "p", "text": "A basic template suite should cover:" },
+      { "type": "ul", "items": [
+        "Epic — the container for a body of related work",
+        "User Story — feature work framed from a user perspective",
+        "Task — implementation-level work items",
+        "Bug Report — with repro steps, expected vs actual behaviour",
+        "Feature Request — for capturing ideas before they become stories"
+      ]},
+      { "type": "callout", "text": "A note on issue types vs labels: GitHub's native issue types aren't always reliable for filtering in Projects v2 views. Label-based filtering (e.g. an <code>epic</code> label) is more dependable and more portable across project configurations." },
+      { "type": "h2", "text": "Estimation without overhead" },
+      { "type": "p", "text": "Estimation is often where PM systems get complicated. Story points, velocity, T-shirt sizes, planning poker — the overhead can easily outweigh the value." },
+      { "type": "p", "text": "A simpler approach: a single <strong>Size field</strong> with values XS through XL, mapped to Fibonacci numbers (1/2/3/5/8). It functions as both a complexity signal and an estimation proxy, without needing a separate Story Points field. Most teams don't need more precision than this." },
+      { "type": "h2", "text": "Automate the boring parts" },
+      { "type": "p", "text": "The most useful automation in a GitHub PM system is date tracking — specifically, recording when an issue moves to In Progress and when it moves to Done. This gives you the data you need for cycle time analysis later, without requiring anyone to manually log times." },
+      { "type": "p", "text": "A GitHub Action that listens for <code>projects_v2_item.edited</code> events and writes to Start Date and End Date fields handles this automatically. The main implementation challenge is retrieving the correct field IDs via the Projects v2 GraphQL API — but once that's done, the workflow runs without any manual input." },
+      { "type": "h2", "text": "Demo before proposing" },
+      { "type": "p", "text": "If you're proposing changes to a shared GitHub organisation, build everything in a personal demo space first. Show the structure, walk through the templates, demonstrate the automation. Then propose the change." },
+      { "type": "callout", "text": "Nobody likes a surprise restructure. A working demo turns a proposal into a conversation." }
+    ]
+  },
+  {
+    "slug": "what-makes-good-gdd",
+    "title": "What Makes a Good Game Design Document",
+    "date": "Mar 2026",
+    "category": "Game Design",
+    "tags": ["game-design", "gdd", "documentation", "process", "kids-mobile"],
+    "excerpt": "A GDD is not a spec. It's not a contract. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development.",
+    "content": [
+      { "type": "p", "text": "Most game design documents are either too short to be useful or too long to be read. The short ones are vague aspirations. The long ones are encyclopaedias that nobody updates after week two. Both fail for the same reason: they're not built around the decisions that actually matter." },
+      { "type": "p", "text": "A good GDD is a <strong>decision-making tool</strong>. Its job is to force clarity on the questions that will otherwise get deferred — and then to keep that clarity visible to everyone on the team as the project evolves." },
+      { "type": "h2", "text": "The purpose of a GDD" },
+      { "type": "p", "text": "Before writing a GDD, it's worth being clear about what it's for. It's not for future developers inheriting the project. It's not for investors or stakeholders. It's for the team building the game, right now, in the next six months." },
+      { "type": "p", "text": "That means it should answer the questions that come up most often in production: What are we building? Who is it for? When we disagree about a design decision, how do we resolve it? What are we explicitly not doing?" },
+      { "type": "h2", "text": "Design pillars that actually work" },
+      { "type": "p", "text": "Design pillars are the most misused element in any GDD. They're usually written as vibes — \"fun\", \"accessible\", \"engaging\" — that can't be applied to an actual decision." },
+      { "type": "p", "text": "A useful design pillar is a constraint. It should be possible to use it to <strong>reject a proposal</strong>. If someone suggests a feature that contradicts a pillar, that contradiction should be visible and discussable." },
+      { "type": "p", "text": "For a kids' mobile game, a pillar like \"No reading required\" is useful. It rules out text-heavy menus, written tutorial instructions, and story-driven objectives. You can use it to say no to things. A pillar like \"Fun for all ages\" is not useful — it says yes to everything." },
+      { "type": "callout", "text": "A design pillar isn't a vibe. It's a decision filter. If it can't be used to reject a proposal, rewrite it until it can." },
+      { "type": "h2", "text": "Personas as design constraints" },
+      { "type": "p", "text": "Player personas often read like marketing demographics — \"female, 25–34, casual gamer\". These are useful for ad targeting and completely useless for design." },
+      { "type": "p", "text": "A design-useful persona answers different questions: What does this player want from the first 30 seconds? What will make them stop playing? What do they already know how to do on a phone that we can rely on?" },
+      { "type": "p", "text": "For kids' games specifically, personas need to account for the full context of play:" },
+      { "type": "ul", "items": [
+        "How long is a typical play session before interruption?",
+        "What fine motor skills can we rely on? Which ones can we not?",
+        "Is the child playing alone, or with a parent present?",
+        "What reading level, if any, can we assume?"
+      ]},
+      { "type": "h2", "text": "The \"Out of Scope\" section" },
+      { "type": "p", "text": "This is the most valuable and most commonly omitted section of any GDD. An explicit list of things the game will not do is more useful than a long list of things it will." },
+      { "type": "p", "text": "Out of Scope does two things. First, it forces the team to make and commit to decisions about scope before production. Second, it gives you something to point to when scope creep arrives — and it always arrives." },
+      { "type": "p", "text": "A good Out of Scope section is specific. Not \"no PvP modes\" but \"no synchronous multiplayer of any kind in v1\". The specificity is the point." },
+      { "type": "h2", "text": "Keeping it alive" },
+      { "type": "p", "text": "A GDD that nobody updates is worse than no GDD, because it creates a false sense of shared understanding. The team thinks the document is the truth. The document is out of date. Decisions get made based on stale information." },
+      { "type": "p", "text": "The solution is to keep the GDD short enough that updating it is not a project in itself. If your core loop section is four pages long, nobody will update it when the core loop changes. If it's a diagram and three paragraphs, they might." },
+      { "type": "callout", "text": "A GDD should be a living document — not in the sense that it changes every day, but in the sense that it is always worth reading. When you open it, it should accurately represent the game you're making, not the game you thought you were making six months ago." }
+    ]
+  }
+]

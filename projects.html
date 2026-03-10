@@ -7,54 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #080b12; --bg2: #0d1120; --border: rgba(255,255,255,0.07); --text: #e8eaf0; --muted: #7c8494; --accent: #00ffff; --accent2: #ff00aa; --card: rgba(255,255,255,0.03); }
-    #orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
-    .bg-mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .bg-mesh::before { content: ''; position: absolute; width: 800px; height: 800px; top: -200px; left: -200px; background: radial-gradient(ellipse, rgba(0,255,255,0.1) 0%, transparent 70%); animation: drift1 18s ease-in-out infinite alternate; }
-    .bg-mesh::after { content: ''; position: absolute; width: 700px; height: 700px; bottom: -100px; right: -100px; background: radial-gradient(ellipse, rgba(255,0,170,0.1) 0%, transparent 70%); animation: drift2 22s ease-in-out infinite alternate; }
-    .bg-mesh-mid { position: fixed; width: 600px; height: 600px; top: 40%; left: 50%; transform: translate(-50%,-50%); background: radial-gradient(ellipse, rgba(255,0,170,0.05) 0%, transparent 70%); pointer-events: none; z-index: 0; animation: drift3 26s ease-in-out infinite alternate; }
-    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px,60px) scale(1.15); } }
-    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,-80px) scale(1.2); } }
-    @keyframes drift3 { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-40%,-60%) scale(1.3); } }
-    .grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(8,11,18,0.75); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-family: 'Exo 2', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-family: 'Fira Code', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    .nav-cta { font-family: 'Fira Code', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.25rem; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 6px; text-decoration: none; transition: all 0.2s; }
-    .nav-cta:hover { background: var(--accent); color: var(--bg); }
-    main { position: relative; z-index: 2; padding-top: 6rem; }
-    .page-hero { padding: 5rem 4rem 3rem; max-width: 1100px; margin: 0 auto; }
-    .page-hero-eyebrow { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
-    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
-    .page-hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .page-hero p { font-size: 1.15rem; color: var(--muted); max-width: 620px; font-weight: 300; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
-    .page-section { padding: 3rem 4rem; max-width: 1100px; margin: 0 auto; }
-    .section-label { font-family: 'Fira Code', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
-    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); opacity: 0.5; }
-    h1, h2, h3, h4 { font-family: 'Exo 2', sans-serif; line-height: 1.1; }
-    .divider { max-width: 1100px; margin: 0 auto; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .btn-secondary { padding: 0.75rem 1.5rem; background: transparent; color: var(--text); font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
-    .btn-secondary:hover { border-color: var(--accent); }
-
-    /* PROJECT ENTRIES */
     .project-entry { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; padding: 3rem 0; align-items: start; }
     .project-entry + .project-entry { border-top: 1px solid var(--border); }
     .project-meta { position: sticky; top: 7rem; }
     .project-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-    .dot-live { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
-    .dot-wip { background: var(--accent); box-shadow: 0 0 4px var(--accent); }
-    .dot-planned { background: var(--muted); }
     .project-meta h2 { font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem; letter-spacing: -0.02em; line-height: 1.15; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
     .project-tag { font-family: 'Fira Code', monospace; font-size: 0.62rem; padding: 0.2rem 0.55rem; border-radius: 4px; background: rgba(255,0,170,0.1); color: var(--accent2); letter-spacing: 0.06em; }
@@ -63,27 +21,18 @@
     .project-link:hover { opacity: 0.7; }
     .project-body p { color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; font-size: 0.975rem; }
     .project-body p strong { color: var(--text); font-weight: 500; }
-    .project-body h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+    .project-body h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 2rem 0 0.75rem; }
     .detail-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
     .detail-list li { font-size: 0.9rem; color: var(--muted); display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 300; }
     .detail-list li::before { content: '›'; color: var(--accent); font-family: 'Fira Code', monospace; flex-shrink: 0; margin-top: 0.1rem; }
-    .highlight-box { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--muted); font-weight: 300; font-style: italic; }
-
-    footer { position: relative; z-index: 2; border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
-    footer p { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
-    footer a { color: var(--accent); text-decoration: none; }
-
+    .highlight-box { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--muted); font-style: italic; }
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; } .nav-links { display: none; }
-      .page-hero, .page-section { padding: 3rem 1.5rem; }
       .project-entry { grid-template-columns: 1fr; gap: 2rem; }
       .project-meta { position: static; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
-
 <div class="bg-mesh"></div>
 <div class="bg-mesh-mid"></div>
 <div class="grain"></div>
@@ -100,207 +49,66 @@
   <a href="https://github.com/olliekrow" class="nav-cta" target="_blank">GitHub</a>
 </nav>
 
-<main>
-
-  <div class="page-hero">
-    <p class="page-hero-eyebrow">// selected work</p>
-    <h1>Projects &<br><span>Experiments.</span></h1>
-    <p>A mix of PM infrastructure, game design artefacts, and documentation tooling — built to solve real problems and iterated until they're worth sharing.</p>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="page-section">
-
-    <!-- PROJECT 1: GitHub PM -->
-    <div class="project-entry reveal" id="github-pm">
-      <div class="project-meta">
-        <div class="project-status"><span class="dot dot-wip"></span> In Progress</div>
-        <h2>GitHub PM Architecture</h2>
-        <div class="project-tags">
-          <span class="project-tag">GitHub Projects</span>
-          <span class="project-tag">GitHub Actions</span>
-          <span class="project-tag">GraphQL</span>
-          <span class="project-tag">YAML</span>
-          <span class="project-tag">Automation</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/olliekrow" class="project-link" target="_blank">↗ View on GitHub</a>
-          <a href="https://olliekrow.github.io/project-hub-2/docs/github-pm/" class="project-link" target="_blank">↗ Read the Docs</a>
-        </div>
-      </div>
-      <div class="project-body">
-        <p>A full org-level GitHub PM setup, built from scratch in a personal demo space before proposing it to a real organisation. The goal was to replace a scattered collection of repo-level projects with a coherent, cross-repo architecture using only native GitHub tooling.</p>
-        <h3>What was built</h3>
-        <ul class="detail-list">
-          <li>A YAML issue template suite covering Epics, User Stories, Tasks, Bug Reports, and Feature Requests — each with structured fields and consistent labelling conventions.</li>
-          <li>Three org-level Projects v2 boards: a Roadmap (Epics on a timeline by milestone), a Team Planning board (Kanban with iteration support), and a Bug Tracker.</li>
-          <li>Custom fields including Start Date, End Date, and a Size field (XS–XL mapped to Fibonacci values 1/2/3/5/8) serving as the estimation proxy — no separate Story Points field needed.</li>
-          <li>A GitHub Action (<code style="font-family:'Fira Code';font-size:0.85em;color:var(--accent)">set-dates.yml</code>) that auto-populates Start Date on status transition to In Progress and End Date on transition to Done, using the Projects v2 GraphQL API.</li>
-        </ul>
-        <h3>Key decisions</h3>
-        <ul class="detail-list">
-          <li><strong>Label-based filtering over issue types</strong> — GitHub issue types weren't rendering reliably in project filters, so label-based filtering (e.g. the <code style="font-family:'Fira Code';font-size:0.85em;color:var(--accent)">epic</code> label) is the more dependable workaround for Roadmap views.</li>
-          <li><strong>Org-level projects only</strong> — repo-level projects lack cross-repo visibility. Org-level is the correct architecture for any team working across multiple repositories.</li>
-          <li><strong>Size as estimation proxy</strong> — avoids introducing a second field and keeps the estimation process lightweight.</li>
-        </ul>
-        <div class="highlight-box">"Prototyping in a personal demo space before proposing org changes is how you manage stakeholder risk. Nobody likes a surprise restructure."</div>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: GDD Template -->
-    <div class="project-entry reveal" id="gdd">
-      <div class="project-meta">
-        <div class="project-status"><span class="dot dot-wip"></span> In Progress</div>
-        <h2>Kids' Mobile GDD Template</h2>
-        <div class="project-tags">
-          <span class="project-tag">Game Design</span>
-          <span class="project-tag">GDD</span>
-          <span class="project-tag">Kids' Mobile</span>
-          <span class="project-tag">Google Docs</span>
-        </div>
-        <div class="project-links">
-          <a href="https://olliekrow.github.io/project-hub-2/docs/game-design/" class="project-link" target="_blank">↗ Read the Docs</a>
-        </div>
-      </div>
-      <div class="project-body">
-        <p>A polished, reusable game design document template built specifically for kids' mobile games. The template was developed using an existing high-quality GDD as a quality benchmark, with the goal of producing something immediately usable rather than a generic starting point.</p>
-        <h3>Design philosophy</h3>
-        <ul class="detail-list">
-          <li><strong>Card-style persona blocks</strong> over side-by-side layouts — tested both approaches; card-style outperforms for readability and is easier to update without reformatting the whole document.</li>
-          <li><strong>Gender-neutral language as a hard standard</strong> — descriptive names and they/them pronouns throughout. Not a stylistic preference, a firm requirement.</li>
-          <li><strong>Design pillars as decision filters</strong> — each pillar is written so it can be used to reject a design proposal. A pillar that can't say no to something isn't doing its job.</li>
-          <li><strong>Accessibility as a first-class concern</strong> — kids' games require no text literacy dependency, clear visual affordances, short session design, and consideration for players with motor or cognitive differences.</li>
-        </ul>
-        <h3>Template structure</h3>
-        <ul class="detail-list">
-          <li>Game Overview — elevator pitch, platform, audience, genre, tone</li>
-          <li>Design Pillars — 3–5 decision-filter statements</li>
-          <li>Core Loop — primary and secondary loops with session arc</li>
-          <li>Player Personas — card-style with name, age, context, motivations, and pain points</li>
-          <li>Progression Systems — rewards, unlocks, difficulty curve</li>
-          <li>Accessibility Considerations — visual, motor, cognitive</li>
-          <li>Out of Scope — explicit list of things the game will not do</li>
-        </ul>
-        <div class="highlight-box">"A GDD is not a spec. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development."</div>
-      </div>
-    </div>
-
-    <!-- PROJECT 3: Docs Site -->
-    <div class="project-entry reveal" id="docs-site">
-      <div class="project-meta">
-        <div class="project-status"><span class="dot dot-live"></span> Live</div>
-        <h2>Project Hub Docs Site</h2>
-        <div class="project-tags">
-          <span class="project-tag">Jekyll</span>
-          <span class="project-tag">Just the Docs</span>
-          <span class="project-tag">GitHub Pages</span>
-          <span class="project-tag">GitHub Actions</span>
-          <span class="project-tag">CI/CD</span>
-        </div>
-        <div class="project-links">
-          <a href="https://olliekrow.github.io/project-hub-2" class="project-link" target="_blank">↗ View Live Site</a>
-          <a href="https://github.com/olliekrow/project-hub-2" class="project-link" target="_blank">↗ View on GitHub</a>
-        </div>
-      </div>
-      <div class="project-body">
-        <p>A Jekyll-based documentation site using the Just the Docs theme, covering PM workflows, game design references, and onboarding material. Deployed automatically on every push to main via GitHub Actions — no manual deployment steps required.</p>
-        <h3>Tech stack</h3>
-        <ul class="detail-list">
-          <li>Jekyll with the Just the Docs v0.10.0 theme via <code style="font-family:'Fira Code';font-size:0.85em;color:var(--accent)">remote_theme</code></li>
-          <li>GitHub Actions workflow for automatic build and deployment</li>
-          <li>Structured navigation with section index files and permalink conventions</li>
-          <li>Hosted on GitHub Pages (free tier)</li>
-        </ul>
-        <h3>Site structure</h3>
-        <ul class="detail-list">
-          <li><strong>GitHub PM</strong> — issue templates, project architecture, workflow automation and the GraphQL queries needed to retrieve field IDs</li>
-          <li><strong>Game Design</strong> — GDD template reference and structure documentation</li>
-          <li><strong>Onboarding</strong> — placeholder, to be built out</li>
-          <li><strong>Roadmap</strong> — placeholder, to be built out</li>
-        </ul>
-        <div class="highlight-box">Built entirely with native GitHub tooling. No third-party hosting, no paid CI/CD service, no CMS — just a repo, a theme, and a workflow file.</div>
-      </div>
-    </div>
-
-    <!-- PROJECT 4: IPSUM / Anonymised -->
-    <div class="project-entry reveal" id="ipsum">
-      <div class="project-meta">
-        <div class="project-status"><span class="dot dot-live"></span> Completed</div>
-        <h2>Nonprofit Operations Overhaul</h2>
-        <div class="project-tags">
-          <span class="project-tag">Operations</span>
-          <span class="project-tag">PM</span>
-          <span class="project-tag">Nonprofit</span>
-          <span class="project-tag">Workflows</span>
-        </div>
-      </div>
-      <div class="project-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organisation, reducing overhead and improving visibility for stakeholders at every level.</p>
-        <h3>What was delivered</h3>
-        <ul class="detail-list">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</li>
-          <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-          <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-          <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
-        </ul>
-        <h3>Outcomes</h3>
-        <ul class="detail-list">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</li>
-          <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</li>
-          <li>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</li>
-        </ul>
-        <div class="highlight-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Details anonymised on request — available to discuss in conversation.</div>
-      </div>
-    </div>
-
-  </div>
-
-</main>
+<main id="main-content"></main>
 
 <footer>
   <p>© 2026 Ollie Krow — <a href="index.html">Home</a></p>
   <p><a href="https://github.com/olliekrow" target="_blank">github.com/olliekrow</a></p>
 </footer>
 
+<script src="js/orbs.js"></script>
+<script src="js/reveal.js"></script>
 <script>
-  const canvas = document.getElementById('orbs');
-  const ctx = canvas.getContext('2d');
-  const COLORS = ['#00ffff', '#ff00aa'];
-  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-  const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  const orbs = Array.from({ length: 7 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: Math.random() * 1.5 + 0.75, color: COLORS[Math.floor(Math.random() * COLORS.length)], vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12, alpha: Math.random() * 0.3 + 0.1, pulse: Math.random() * Math.PI * 2, pulseSpeed: Math.random() * 0.008 + 0.003 }));
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    orbs.forEach(o => {
-      o.pulse += o.pulseSpeed;
-      const glowR = o.r * (1 + 0.4 * Math.sin(o.pulse));
-      const alpha = o.alpha * (0.8 + 0.2 * Math.sin(o.pulse));
-      const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, glowR * 10);
-      grad.addColorStop(0, o.color + Math.round(alpha * 255).toString(16).padStart(2,'0'));
-      grad.addColorStop(1, o.color + '00');
-      ctx.beginPath(); ctx.arc(o.x, o.y, glowR * 10, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
-      ctx.beginPath(); ctx.arc(o.x, o.y, glowR, 0, Math.PI * 2);
-      ctx.fillStyle = o.color; ctx.globalAlpha = alpha; ctx.fill(); ctx.globalAlpha = 1;
-      o.x += o.vx; o.y += o.vy;
-      const dx = mouse.x - o.x; const dy = mouse.y - o.y; const dist = Math.sqrt(dx*dx+dy*dy);
-      o.vx += (dx/dist)*0.0008; o.vy += (dy/dist)*0.0008;
-      const spd = Math.sqrt(o.vx*o.vx+o.vy*o.vy);
-      if (spd > 0.6) { o.vx=(o.vx/spd)*0.6; o.vy=(o.vy/spd)*0.6; }
-      if (o.x<-20) o.x=canvas.width+20; if (o.x>canvas.width+20) o.x=-20;
-      if (o.y<-20) o.y=canvas.height+20; if (o.y>canvas.height+20) o.y=-20;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-</script>
-<script>
+async function init() {
+  const site = await fetch('data/site.json').then(r => r.json());
+  const dotClass = s => s === 'live' ? 'dot-live' : s === 'wip' ? 'dot-wip' : 'dot-planned';
+
+  const projectsHTML = site.projects.map(p => `
+    <div class="project-entry reveal" id="${p.id}">
+      <div class="project-meta">
+        <div class="project-status"><span class="dot ${dotClass(p.status)}"></span> ${p.status_label}</div>
+        <h2>${p.title}</h2>
+        <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
+        <div class="project-links">
+          ${p.links.map(l => `<a href="${l.url}" class="project-link" target="_blank">↗ ${l.label}</a>`).join('')}
+        </div>
+      </div>
+      <div class="project-body">
+        <p>${p.detail.intro}</p>
+        ${p.detail.sections.map(s => `
+          <h3>${s.heading}</h3>
+          <ul class="detail-list">${s.items.map(i => `<li>${i}</li>`).join('')}</ul>
+        `).join('')}
+        <div class="highlight-box">${p.detail.callout}</div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('main-content').innerHTML = `
+    <div class="page-hero">
+      <p class="page-hero-eyebrow">// selected work</p>
+      <h1>Projects &<br><span>Experiments.</span></h1>
+      <p>A mix of PM infrastructure, game design artefacts, and documentation tooling — built to solve real problems and iterated until they're worth sharing.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="page-section">${projectsHTML}</div>
+  `;
+
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Scroll to anchor if present in URL
+  const hash = window.location.hash;
+  if (hash) {
+    setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+init();
 </script>
 </body>
 </html>
