@@ -1,16 +1,16 @@
 {
   "hero": {
-    "eyebrow": "// program manager · game designer · writer",
-    "heading": "Ollie Krow",
-    "heading_gradient": "Build. Design. Write.",
-    "sub": "I build <strong>systems that help teams ship</strong>, design <strong>games that make kids smile</strong>, and write about the craft behind both.",
-    "tags": ["GitHub Projects v2", "Game Design", "Documentation", "Kids' Mobile", "Jekyll", "GitHub Actions", "Writing"]
+    "eyebrow": "// program manager · producer · maker of things",
+    "heading": "Olivia Krowicka",
+    "heading_gradient": "Tech. Design. Art & Culture."
+    "sub": "I create<strong>systems and processes that help teams do their best work</strong>, creating layers that balance the needs of teams and the business <strong>without friction by letting teams focus on what they do best</strong>, and write about the craft that makes it all possible.",
+    "tags": ["Game Development", "Software Development", "Quality Engineering", "E-Commerce", "Mobile", "Interactive Story Telling", "Writing", "Concept Development", "Pitches", "Fun With Data", "Documentation"]
   },
   "about": {
     "heading": "Building with intention — across disciplines.",
     "heading_accent": "intention",
     "paragraphs": [
-      "I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.",
+      "I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day, I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.",
       "My PM work is rooted in <strong>lean, native tooling</strong> — getting the most out of platforms teams already use without introducing tool sprawl. I prototype in a demo space before proposing org-level changes, because nobody likes a surprise restructure.",
       "When I write, it's about <strong>process, art, inspiration, and craft</strong> — the things that make work worth doing."
     ],
@@ -18,13 +18,13 @@
       { "num": "3", "label": "Org-level GitHub projects built from scratch" },
       { "num": "4+", "label": "Active projects across PM, game design & docs" },
       { "num": "1", "label": "GDD template polished to benchmark quality" },
-      { "num": "∞", "label": "Issues triaged and labeled correctly" }
+      { "num": "∞", "label": "Issues triaged and labelled correctly" }
     ],
     "full": {
       "paragraphs": [
         "I'm a <strong>Program Manager</strong> with a background that spans operations, game design, and technical writing. My approach is rooted in <strong>lean, native tooling</strong> — I'd rather get 90% of the value from tools a team already has than introduce a new platform that adds overhead without adding clarity.",
         "On the PM side, I build structured systems from scratch. That means <strong>issue templates, project boards, automation workflows, and documentation</strong> — not as an end in themselves, but as scaffolding that helps teams move faster with less friction. I prototype in a personal demo space before proposing anything at the org level, because changes to shared infrastructure deserve a soft landing.",
-        "On the game design side, I write <strong>GDDs that function as thinking tools</strong> rather than spec documents. A good GDD forces decisions early — about core loop, about who the player is, about what the game refuses to compromise on. I specialise in kids' mobile games, where the design constraints are the most interesting.",
+        "On the game design side, I write <strong>GDDs that function as thinking tools</strong> rather than spec documents. A good GDD forces decisions early — about core loop, about who the player is, about what the game refuses to compromise on. I specialize in kids' mobile games, where the design constraints are the most interesting.",
         "I also <strong>write</strong> — about process, craft, and the things that make work worth doing. The blog is where I work through ideas that don't fit anywhere else."
       ],
       "disciplines": ["Program Management", "Game Design", "Technical Writing", "Documentation", "Process Design"],
@@ -69,7 +69,7 @@
         { "label": "Read the Docs", "url": "https://olliekrow.github.io/project-hub-2/docs/github-pm/" }
       ],
       "detail": {
-        "intro": "A full org-level GitHub PM setup, built from scratch in a personal demo space before proposing it to a real organisation. The goal was to replace a scattered collection of repo-level projects with a coherent, cross-repo architecture using only native GitHub tooling.",
+        "intro": "A full org-level GitHub PM setup, built from scratch in a personal demo space before proposing it to a real organization. The goal was to replace a scattered collection of repo-level projects with a coherent, cross-repo architecture using only native GitHub tooling.",
         "sections": [
           {
             "heading": "What was built",
@@ -171,11 +171,11 @@
       "status": "live",
       "status_label": "Completed",
       "title": "Nonprofit Operations Overhaul",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organisation.",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organization.",
       "tags": ["Operations", "PM", "Nonprofit"],
       "links": [],
       "detail": {
-        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organisation.",
+        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organization.",
         "sections": [
           {
             "heading": "What was delivered",
@@ -204,8 +204,8 @@
     "sub": "Whether it's a PM challenge, a game you're building, or something you want to write about — I'm interested. Reach out.",
     "links": [
       { "label": "GitHub", "url": "https://github.com/olliekrow", "icon": "github" },
-      { "label": "Email", "url": "mailto:placeholder@email.com", "icon": "email" },
-      { "label": "Docs Hub", "url": "https://olliekrow.github.io/project-hub-2", "icon": "docs" }
+      { "label": "Email", "url": "mailto:olivia.krowicka@gmail.com", "icon": "email" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/okrowicka/", "icon": "social" }
     ]
   }
 }
