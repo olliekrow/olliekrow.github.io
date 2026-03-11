@@ -93,43 +93,26 @@
       }
     },
     {
-      "id": "gdd",
-      "status": "wip",
-      "status_label": "In Progress",
-      "title": "Kids' Mobile GDD Template",
-      "summary": "A polished, reusable game design document template for kids' mobile games. Card-style persona blocks, gender-neutral language as a hard standard, and design pillars framed as decision filters rather than decorative statements.",
-      "tags": ["Game Design", "GDD", "Mobile", "Kids"],
-      "links": [
-        { "label": "Read the Docs", "url": "https://olliekrow.github.io/project-hub-2/docs/game-design/" }
-      ],
+      "id": "ipsum",
+      "status": "live",
+      "status_label": "Completed",
+      "title": "Nonprofit Operations Overhaul",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organization.",
+      "tags": ["Operations", "PM", "Nonprofit"],
+      "links": [],
       "detail": {
-        "intro": "A polished, reusable game design document template built specifically for kids' mobile games. Developed using an existing high-quality GDD as a quality benchmark, with the goal of producing something immediately usable rather than a generic starting point.",
+        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organization.",
         "sections": [
           {
-            "heading": "Design philosophy",
+            "heading": "What was delivered",
             "items": [
-              "<strong>Card-style persona blocks</strong> over side-by-side layouts — tested both approaches; card-style outperforms for readability.",
-              "<strong>Gender-neutral language as a hard standard</strong> — descriptive names and they/them pronouns throughout. Not a stylistic preference, a firm requirement.",
-              "<strong>Design pillars as decision filters</strong> — each pillar is written so it can be used to reject a design proposal.",
-              "<strong>Accessibility as a first-class concern</strong> — no text literacy dependency, clear visual affordances, short session design."
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+              "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
             ]
           },
-          {
-            "heading": "Template structure",
-            "items": [
-              "Game Overview — elevator pitch, platform, audience, genre, tone",
-              "Design Pillars — 3–5 decision-filter statements",
-              "Core Loop — primary and secondary loops with session arc",
-              "Player Personas — card-style with name, age, context, motivations, pain points",
-              "Progression Systems — rewards, unlocks, difficulty curve",
-              "Accessibility Considerations — visual, motor, cognitive",
-              "Out of Scope — explicit list of things the game will not do"
-            ]
-          }
-        ],
-        "callout": "A GDD is not a spec. It's a thinking tool — a way of forcing decisions that would otherwise get deferred until they become expensive problems mid-development."
-      }
-    },
+         
     {
       "id": "docs-site",
       "status": "live",
