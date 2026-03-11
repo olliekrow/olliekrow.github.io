@@ -3,7 +3,7 @@
     "eyebrow": "// program manager · producer · maker of things",
     "heading": "Olivia Krowicka",
     "heading_gradient": "Tech. Design. Culture.",
-    "sub": "I create<strong>systems and processes that help teams do their best work</strong>, creating layers that balance the needs of teams and the business <strong>without friction by letting teams focus on what they do best</strong>, and write about the craft that makes it all possible.",
+    "sub": "I create <strong>systems and processes that help teams do their best work</strong>, creating layers that balance the needs of teams and the business <strong>without friction by letting teams focus on what they do best</strong>, and write about the craft that makes it all possible.",
     "tags": ["Game Development", "Software Development", "Quality Engineering", "E-Commerce", "Mobile", "Interactive Story Telling", "Writing", "Concept Development", "Pitches", "Fun With Data", "Documentation"]
   },
   "about": {
@@ -93,27 +93,6 @@
       }
     },
     {
-      "id": "ipsum",
-      "status": "live",
-      "status_label": "Completed",
-      "title": "Nonprofit Operations Overhaul",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organization.",
-      "tags": ["Operations", "PM", "Nonprofit"],
-      "links": [],
-      "detail": {
-        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rebuilt project tracking and operational workflows across a multi-team nonprofit organization.",
-        "sections": [
-          {
-            "heading": "What was delivered",
-            "items": [
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
-            ]
-          },
-         
-    {
       "id": "docs-site",
       "status": "live",
       "status_label": "Live",
@@ -188,7 +167,7 @@
     "links": [
       { "label": "GitHub", "url": "https://github.com/olliekrow", "icon": "github" },
       { "label": "Email", "url": "mailto:olivia.krowicka@gmail.com", "icon": "email" },
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/okrowicka/", "icon": "social" }
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/okrowicka/", "icon": "linkedin" }
     ]
   }
 }
