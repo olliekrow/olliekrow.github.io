@@ -27,7 +27,8 @@
         "On the game design side, I write <strong>GDDs that function as thinking tools</strong> rather than spec documents. A good GDD forces decisions early — about core loop, about who the player is, about what the game refuses to compromise on. I specialize in kids' mobile games, where the design constraints are the most interesting.",
         "I also <strong>write</strong> — about process, craft, and the things that make work worth doing. The blog is where I work through ideas that don't fit anywhere else."
       ],
-      "disciplines": ["Program Management", "Game Development", "Strategy", "Documentation", "Process Design + Optimization"],
+      "disciplines": ["Program Management", "Game Development", "Strategy", "Documentation", "Process Implementation", "Process Optimization"],
+      "certifications": ["PMP - In Progress", "Certified SAFe® 6 Practice Consultant", "SAFe Release Train Engineer Essentials", "Advanced Certified ScrumMaster (A-CSM)", "Advanced Certified Scrum Product Owner (ACSPO)", "Certified LeSS Basics"],
       "tools": ["Jira + Confluence", "Advanced Plan", "Roadmunk", "MS Project", "Asana", "Linear", "EazyBI +PowerBI", "JQL/Advanced JQL + Rich Queries", "GitHub Projects + GitHub Actions", "Google Docs / Google Scripts", "ML/AI"]
     }
   },
