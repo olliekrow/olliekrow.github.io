@@ -27,8 +27,8 @@
         "On the game design side, I write <strong>GDDs that function as thinking tools</strong> rather than spec documents. A good GDD forces decisions early — about core loop, about who the player is, about what the game refuses to compromise on. I specialize in kids' mobile games, where the design constraints are the most interesting.",
         "I also <strong>write</strong> — about process, craft, and the things that make work worth doing. The blog is where I work through ideas that don't fit anywhere else."
       ],
-      "disciplines": ["Program Management", "Game Design", "Technical Writing", "Documentation", "Process Design"],
-      "tools": ["GitHub Projects v2", "GitHub Actions", "GraphQL API", "Jekyll / Just the Docs", "Google Docs / Drive", "YAML / Markdown"]
+      "disciplines": ["Program Management", "Game Development", "Strategy", "Documentation", "Process Design + Optimization"],
+      "tools": ["Jira + Confluence", "Advanced Plan", "Roadmunk", "MS Project", "Asana", "Linear", "EazyBI +PowerBI", "JQL/Advanced JQL + Rich Queries", "GitHub Projects + GitHub Actions", "Google Docs / Google Scripts", "ML/AI"]
     }
   },
   "principles": [
