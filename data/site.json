@@ -169,7 +169,8 @@
   ],
   "contact": {
     "heading": "Let's work together.",
-    "sub": "Whether it's a service, software, a game you're building, or something you want to bring to life or just want someone to collaborate with on a problem. Reach out and let's chat.",
+    "sub": "Whether it's a service, software, a game you're building, or something you want to bring to life or just want someone to collaborate with on a problem.",
+    "Reach out and let's chat."
     "links": [
       { "label": "GitHub", "url": "https://github.com/olliekrow", "icon": "github" },
       { "label": "Email", "url": "mailto:olivia.krowicka@gmail.com", "icon": "email" },
