@@ -206,7 +206,7 @@ async function init() {
     <section id="projects">
       <p class="section-label reveal">Featured Projects</p>
       <div class="projects-grid">
-        ${home.projects.map(p => `
+        ${projects.projects.map(p => `
           <div class="project-card reveal" onclick="location.href='projects.html#${p.id}'">
             <div class="project-status"><span class="dot ${dotClass(p.status)}"></span> ${p.status_label}</div>
             <h3>${p.title}</h3>
