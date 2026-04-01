@@ -11,14 +11,14 @@
   "heading_accent": "intention",
   "paragraphs": [
     "I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day, I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.",
-    "My PM work is rooted in <strong>lean, native tooling</strong> — getting the most out of platforms teams already use without introducing tool sprawl. I prototype in a demo space before proposing org-level changes, because nobody likes a surprise restructure.",
-    "When I write, it's about <strong>process, art, inspiration, and craft</strong> — the things that make work worth doing."
+    "My PM work is rooted in <strong>lean, native tooling</strong> and getting the most out of platforms teams already use without introducing tool sprawl. I like to prototype in a demo space before proposing org-level changes, because nobody likes a surprise restructure.",
+    "When I write, it's about <strong>process, art, inspiration, and craft</strong> to share knowledge about the work we do and how we do it."
   ],
   "stats": [
-    { "num": "3", "label": "Org-level GitHub projects built from scratch" },
-    { "num": "4+", "label": "Active projects across PM, game design & docs" },
-    { "num": "1", "label": "GDD template polished to benchmark quality" },
-    { "num": "∞", "label": "Issues triaged and labelled correctly" }
+    { "num": "16+", "label": "Years of experience across digital, e-commerce, mobile and games" },
+    { "num": "5,000+", "label": "JIRA tickets created, triaged and tagged for easy queries" },
+    { "num": "100+", "label": "BI reports and dashboards created" },
+    { "num": "∞", "label": "Initiatives and projects delivered" }
   ]
 },
   "skills": [
