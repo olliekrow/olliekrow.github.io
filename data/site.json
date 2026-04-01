@@ -37,13 +37,13 @@
       "tools": ["Jira + Confluence", "Advanced Plan", "Roadmunk", "MS Project", "Asana", "Linear", "EazyBI +PowerBI", "JQL/Advanced JQL + Rich Queries", "GitHub Projects + GitHub Actions", "Google Docs / Google Scripts", "ML/AI"]
     }
   },
-  "principles": [
-    { "num": "01", "title": "Demo before proposing", "body": "Nobody likes a surprise restructure. Prototype the change in a safe space first. Show, don't pitch." },
-    { "num": "02", "title": "Lean tooling", "body": "The best tool is the one a team already has. Add a new platform only when the native option genuinely can't do the job." },
-    { "num": "03", "title": "Documentation as first-class work", "body": "A system nobody can onboard into is a system that will break. Good docs aren't overhead — they're the product." },
-    { "num": "04", "title": "Design pillars as filters", "body": "A design pillar isn't a vibe. It's a decision-making tool. If it can't be used to say no to something, it's not doing its job." },
-    { "num": "05", "title": "Estimation without overhead", "body": "Story points, velocity, T-shirt sizes — pick one and make it dead simple. Complexity in the estimation system defeats its own purpose." },
-    { "num": "06", "title": "Iterative refinement", "body": "The first version is a hypothesis. Ship it, learn from it, improve it. Quality is a direction, not a destination." }
+  "values": [
+    { "num": "01", "title": "Stay Curious", "body": "Be a lifelong learner, ask questions, seek answers in unusual places. Get inspired by the world around you. Step outside your comfort zone and make trying new things a habit. " },
+    { "num": "02", "title": "Know The Rules To Break the Rules", "body": "Breaking a rule you understand is a decision; breaking one you don't know exists is a mistake. Know the boundaries well enough to know exactly what happens when you push past them. Be intentional and proactive, not accidental." },
+    { "num": "03", "title": "Lean Into Creative Tension", "body": "When you bring different people with different perspectives into the room and let ideas get genuinely challenged, you stop optimizing what already exists and start discovering what's actually possible. The friction is the point." },
+    { "num": "04", "title": "Lead With Integrity", "body": "Do what you say, say what you mean. Take responsibility when you're wrong, give credit where it's due, and never position yourself as the hero of a story that belongs to everyone. Integrity is how you show up every day and what you do, even when no one is watching." },
+    { "num": "05", "title": "Embrace Change", "body": "The situation will always change. Embracing change is the ability to respond to what's in front of you, find a path through, and still land somewhere better than where you started. It's turning any setback into a win by understanding what success looks like for everyone in the room and finding a way to get there regardless of the obstacles." },
+    { "num": "06", "title": "Be Genuine", "body": "Success means nothing if it only belongs to one person. Being genuine means showing up as yourself, caring about the people around you, and wanting everyone to win. We only truly succeed when we elevate those around us. " }
   ],
   "skills": [
     {
