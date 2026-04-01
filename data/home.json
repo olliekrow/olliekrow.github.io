@@ -23,19 +23,19 @@
 },
   "skills": [
     {
-      "icon": "🗂️",
+      "icon": "🎯",
       "title": "Program Management",
-      "items": ["GitHub Projects v2", "GitHub Actions", "GraphQL API", "Issue Templates", "Sprint Planning", "Roadmapping", "Stakeholder Comms", "Process Design"]
+      "items": ["Strategic Planning", "Product Roadmapping", "Process Design", "Process Optimization", "Value Delivery", "Tool Adoption", "Project Tracking", "Scope & Capacity Planning", "Dependency Management", "Stakeholder Comms", "Agile Frameworks", "Change Management" ]
+    },
+    {
+      "icon": "🤖",
+      "title": "Technical Delivery",
+      "items": ["Quality Engineering", "Test Strategy", "Automation", "BI Reporting & Dashboards", "Data Analysis", "Tooling & Infrastructure", "GitHub Actions", "Jira & Confluence", "Advanced JQL"]
     },
     {
       "icon": "🎮",
-      "title": "Game Design",
-      "items": ["GDD Authoring", "Core Loop Design", "Kids' Mobile", "Persona Design", "Progression Systems", "Accessibility", "Playtesting", "Design Pillars"]
-    },
-    {
-      "icon": "✍️",
-      "title": "Writing & Docs",
-      "items": ["Technical Writing", "Blog Writing", "Jekyll / Markdown", "GitHub Pages", "Process Docs", "Onboarding Guides", "YAML Templates", "Just the Docs"]
+      "title": "Creative & Production",
+      "items": ["Creative Project Delivery", "Concept Development", "Production Planning", "Creative Briefs", "Persona Design", "Playtesting", "Accessibility", "Design Pillars", "Cross-functional Creative Collaboration"]
     }
   ],
   "principles": [
