@@ -60,7 +60,7 @@
 <script src="js/reveal.js"></script>
 <script>
 async function init() {
-  const site = await fetch('data/site.json').then(r => r.json());
+  const site = await fetch('data/projects.json').then(r => r.json());
   const dotClass = s => s === 'live' ? 'dot-live' : s === 'wip' ? 'dot-wip' : 'dot-planned';
 
   const projectsHTML = site.projects.map(p => `

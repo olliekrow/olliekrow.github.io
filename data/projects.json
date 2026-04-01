@@ -1,0 +1,107 @@
+ {
+  "projects": [
+    {
+      "id": "github-pm",
+      "status": "wip",
+      "status_label": "In Progress",
+      "title": "GitHub PM Architecture",
+      "summary": "A full org-level PM setup built from scratch — YAML issue templates, three Projects v2 boards with custom fields, and GitHub Actions automation for date tracking. Prototyped in a personal demo space before proposing to a real org.",
+      "tags": ["GitHub Projects", "Actions", "GraphQL", "YAML"],
+      "links": [
+        { "label": "View on GitHub", "url": "https://github.com/olliekrow" },
+        { "label": "Read the Docs", "url": "https://olliekrow.github.io/project-hub-2/docs/github-pm/" }
+      ],
+      "detail": {
+        "intro": "A full org-level GitHub PM setup, built from scratch in a personal demo space before proposing it to a real organization. The goal was to replace a scattered collection of repo-level projects with a coherent, cross-repo architecture using only native GitHub tooling.",
+        "sections": [
+          {
+            "heading": "What was built",
+            "items": [
+              "A YAML issue template suite covering Epics, User Stories, Tasks, Bug Reports, and Feature Requests — each with structured fields and consistent labelling conventions.",
+              "Three org-level Projects v2 boards: a Roadmap (Epics on a timeline by milestone), a Team Planning board (Kanban with iteration support), and a Bug Tracker.",
+              "Custom fields including Start Date, End Date, and a Size field (XS–XL mapped to Fibonacci values 1/2/3/5/8) serving as the estimation proxy.",
+              "A GitHub Action (set-dates.yml) that auto-populates Start Date on transition to In Progress and End Date on transition to Done, using the Projects v2 GraphQL API."
+            ]
+          },
+          {
+            "heading": "Key decisions",
+            "items": [
+              "<strong>Label-based filtering over issue types</strong> — GitHub issue types weren't rendering reliably in project filters, so label-based filtering is the more dependable workaround.",
+              "<strong>Org-level projects only</strong> — repo-level projects lack cross-repo visibility. Org-level is the correct architecture for any team working across multiple repositories.",
+              "<strong>Size as estimation proxy</strong> — avoids introducing a second field and keeps the estimation process lightweight."
+            ]
+          }
+        ],
+        "callout": "Prototyping in a personal demo space before proposing org changes is how you manage stakeholder risk. Nobody likes a surprise restructure."
+      }
+    },
+    {
+      "id": "docs-site",
+      "status": "live",
+      "status_label": "Live",
+      "title": "Project Hub Docs Site",
+      "summary": "A Jekyll + Just the Docs documentation site covering PM workflows, game design references, and onboarding. Auto-deployed on every push via GitHub Actions. Built entirely with native GitHub tooling.",
+      "tags": ["Jekyll", "GitHub Pages", "Just the Docs", "CI/CD"],
+      "links": [
+        { "label": "View Live Site", "url": "https://olliekrow.github.io/project-hub-2" },
+        { "label": "View on GitHub", "url": "https://github.com/olliekrow/project-hub-2" }
+      ],
+      "detail": {
+        "intro": "A Jekyll-based documentation site using the Just the Docs theme, covering PM workflows, game design references, and onboarding material. Deployed automatically on every push to main via GitHub Actions.",
+        "sections": [
+          {
+            "heading": "Tech stack",
+            "items": [
+              "Jekyll with the Just the Docs v0.10.0 theme via remote_theme",
+              "GitHub Actions workflow for automatic build and deployment",
+              "Structured navigation with section index files and permalink conventions",
+              "Hosted on GitHub Pages (free tier)"
+            ]
+          },
+          {
+            "heading": "Site structure",
+            "items": [
+              "<strong>GitHub PM</strong> — issue templates, project architecture, workflow automation and GraphQL queries",
+              "<strong>Game Design</strong> — GDD template reference and structure documentation",
+              "<strong>Onboarding</strong> — placeholder, to be built out",
+              "<strong>Roadmap</strong> — placeholder, to be built out"
+            ]
+          }
+        ],
+        "callout": "Built entirely with native GitHub tooling. No third-party hosting, no paid CI/CD service, no CMS — just a repo, a theme, and a workflow file."
+      }
+    },
+    {
+      "id": "ipsum",
+      "status": "live",
+      "status_label": "Completed",
+      "title": "Lorem ipsum dolor",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rebuilt project tracking, introduced structured workflows, and reduced operational overhead across a multi-team nonprofit organization.",
+      "tags": ["Operations", "PM", "Nonprofit"],
+      "links": [],
+      "detail": {
+        "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "sections": [
+          {
+            "heading": "What was delivered",
+            "items": [
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+              "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+            ]
+          },
+          {
+            "heading": "Outcomes",
+            "items": [
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+              "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+              "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit."
+            ]
+          }
+        ],
+        "callout": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Details anonymized on request — available to discuss in conversation."
+      }
+    }
+  ]
+}

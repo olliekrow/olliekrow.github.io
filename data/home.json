@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "eyebrow": "// program manager · producer · maker of things",
+    "heading": "Olivia Krowicka",
+    "heading_gradient": "People. Process. Product.",
+    "sub": "Great products don't ship by accident. I build the structure and set up the <strong>building blocks</strong> that make successful product delivery possible, <strong>keeping people focused</strong> on the work that matters.",
+    "tags": ["AAA Games", "Software Products", "E-Commerce", "Mobile Apps", "Quality Engineering", "Automation", "Strategy", "Data"]
+  },
+  "about": {
+  "heading": "Building with intention — across disciplines.",
+  "heading_accent": "intention",
+  "paragraphs": [
+    "I'm a <strong>Program Manager</strong> who works at the intersection of structured systems and creative work. By day, I build the workflows, tooling, and documentation that help teams ship. By night I design games and write.",
+    "My PM work is rooted in <strong>lean, native tooling</strong> — getting the most out of platforms teams already use without introducing tool sprawl. I prototype in a demo space before proposing org-level changes, because nobody likes a surprise restructure.",
+    "When I write, it's about <strong>process, art, inspiration, and craft</strong> — the things that make work worth doing."
+  ],
+  "stats": [
+    { "num": "3", "label": "Org-level GitHub projects built from scratch" },
+    { "num": "4+", "label": "Active projects across PM, game design & docs" },
+    { "num": "1", "label": "GDD template polished to benchmark quality" },
+    { "num": "∞", "label": "Issues triaged and labelled correctly" }
+  ]
+},
+  "skills": [
+    {
+      "icon": "🗂️",
+      "title": "Program Management",
+      "items": ["GitHub Projects v2", "GitHub Actions", "GraphQL API", "Issue Templates", "Sprint Planning", "Roadmapping", "Stakeholder Comms", "Process Design"]
+    },
+    {
+      "icon": "🎮",
+      "title": "Game Design",
+      "items": ["GDD Authoring", "Core Loop Design", "Kids' Mobile", "Persona Design", "Progression Systems", "Accessibility", "Playtesting", "Design Pillars"]
+    },
+    {
+      "icon": "✍️",
+      "title": "Writing & Docs",
+      "items": ["Technical Writing", "Blog Writing", "Jekyll / Markdown", "GitHub Pages", "Process Docs", "Onboarding Guides", "YAML Templates", "Just the Docs"]
+    }
+  ],
+  "principles": [
+    { "num": "01", "title": "Demo before proposing", "body": "Nobody likes a surprise restructure. Prototype the change in a safe space first. Show, don't pitch." },
+    { "num": "02", "title": "Lean tooling", "body": "The best tool is the one a team already has. Add a new platform only when the native option genuinely can't do the job." },
+    { "num": "03", "title": "Documentation as first-class work", "body": "A system nobody can onboard into is a system that will break. Good docs aren't overhead — they're the product." },
+    { "num": "04", "title": "Design pillars as filters", "body": "A design pillar isn't a vibe. It's a decision-making tool. If it can't be used to say no to something, it's not doing its job." },
+    { "num": "05", "title": "Estimation without overhead", "body": "Story points, velocity, T-shirt sizes — pick one and make it dead simple. Complexity in the estimation system defeats its own purpose." },
+    { "num": "06", "title": "Iterative refinement", "body": "The first version is a hypothesis. Ship it, learn from it, improve it. Quality is a direction, not a destination." }
+  ],
+  "contact": {
+    "heading": "Let's work together.",
+    "sub": "Whether it's a service, software, a game you're building, or something you want to bring to life, or just want someone to collaborate with on a problem.<br><br>Reach out and let's chat.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/olliekrow", "icon": "github" },
+      { "label": "Email", "url": "mailto:olivia.krowicka@gmail.com", "icon": "email" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/okrowicka/", "icon": "linkedin" }
+    ]
+  }
+}

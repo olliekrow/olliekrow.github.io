@@ -1,0 +1,29 @@
+{
+  "about": {
+    "heading": "I make sense out of chaos.",
+    "full": {
+      "paragraphs": [
+        "As a kid, I loved taking things apart. I took apart clocks and a sewing machine, much to my parents' chagrin. I didn't always know how to put them back together, but that wasn't really the point. I wanted to see what was inside, and I wanted to understand how it all worked.",
+        "I was born in <strong>Poland</strong> and grew up steeped in the arts, from music to visual art, creative expression as a way of life. That foundation never left. It lives in how I approach problems, how I think about design, and the something extra I bring to the work that's hard to put a name to. When I came to Canada, I brought all of that with me, along with a deep appreciation for every opportunity before me. I don't take any of it for granted. That shapes how hard I work and how genuinely I show up for the people I work with.",
+        "That curiosity never went away. I'm still that person and love taking problems apart, solving one small part at a time.",
+        "I'm endlessly curious about systems, about people, about the space where the two meet. What makes them tick? The psychology of why a big red button is so inviting. I could stop at planning and the clearly defined boundaries of a job title, but I'm always thinking about who we're building things for, and how they will use what we're building, and whether they will use it.",
+        "Everything I make is ultimately for people, so understanding their joys, their frustrations, and everything in between is how I make sure I'm solving the right problems and not just the ones that seem easier.",
+        "At the heart of it, I love the work. The logic, the reasoning, the moment something clicks into place. But I'm always working toward something human. I want the things I build to bring <strong>joy</strong>, to make work feel lighter, to leave people better equipped than when I arrived.",
+        "I build around people. I learn how they work, what they need, what they're capable of, and then I build something they can own long after I'm no longer in the room.",
+        "That's what drew me to program management. I believe processes and technology exist to serve people, not the other way around. So I don't bring a system and fit people into it, but rather I learn how a team actually works and build something around them. Sixteen years across gaming, e-commerce, pharma, and agency work have shown me that the best process is usually the one nobody notices because it just works.",
+        "And there's nothing quite like watching a tiny seed of an idea become something real that exists in the world. Knowing that the right structure was there to support it, to clear the path and let people focus on what they do best — that's the work. That's why I do it."
+      ],
+      "disciplines": ["Program Management", "Game Development", "Strategy", "Project Documentation", "Process Implementation", "Process Optimization"],
+      "certifications": ["PMP - In Progress", "Certified SAFe® 6 Practice Consultant", "SAFe Release Train Engineer Essentials", "Advanced Certified ScrumMaster (A-CSM)", "Advanced Certified Scrum Product Owner (ACSPO)", "Certified LeSS Basics"],
+      "tools": ["Jira + Confluence", "Advanced Plan", "Roadmunk", "MS Project", "Asana", "Linear", "EazyBI + Power BI", "JQL/Advanced JQL + Rich Queries", "GitHub Projects + GitHub Actions", "Google Docs / Google Apps Script", "ML/AI"]
+    }
+  },
+  "values": [
+    { "num": "01", "title": "Stay Curious", "body": "Be a lifelong learner, ask questions, seek answers in unusual places. Get inspired by the world around you. Step outside your comfort zone and make trying new things a habit." },
+    { "num": "02", "title": "Know The Rules To Break The Rules", "body": "Breaking a rule you understand is a decision; breaking one you don't know exists is a mistake. Know the boundaries well enough to know exactly what happens when you push past them. Be intentional and proactive, not accidental." },
+    { "num": "03", "title": "Lean Into Creative Tension", "body": "When you bring different people with different perspectives into the room and let ideas get genuinely challenged, you stop optimizing what already exists and start discovering what's actually possible. The friction is the point." },
+    { "num": "04", "title": "Lead With Integrity", "body": "Do what you say, say what you mean. Take responsibility when you're wrong, give credit where it's due, and never position yourself as the hero of a story that belongs to everyone. Integrity is how you show up every day and what you do, even when no one is watching." },
+    { "num": "05", "title": "Embrace Change", "body": "The situation will always change. Embracing change is the ability to respond to what's in front of you, find a path through, and still land somewhere better than where you started. It's turning any setback into a win by understanding what success looks like for everyone in the room and finding a way to get there regardless of the obstacles." },
+    { "num": "06", "title": "Be Genuine", "body": "Success means nothing if it only belongs to one person. Being genuine means showing up as yourself, caring about the people around you, and wanting everyone to win. We only truly succeed when we elevate those around us." }
+  ]
+}

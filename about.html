@@ -62,7 +62,7 @@
 <script src="js/reveal.js"></script>
 <script>
 async function init() {
-  const site = await fetch('data/site.json').then(r => r.json());
+  const site = await fetch('data/about.json').then(r => r.json());
   const a = site.about;
 
   document.getElementById('main-content').innerHTML = `
